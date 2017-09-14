@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+<style>
+body {
+	background-image:url("http://www.grupoescolar.com/a/b/693B1.jpg");
+	background-size:100%;
+}
+</style>
+
+
+</head>
+
+<h1 align="center" style="color: #FFB975">Database</h1>
+<body >
+
+   <script>
+
+
+function required()  
+{  
+var StartDate = document.forms["myForm"]["Sdate"].value;  
+var EndDate= document.forms["myForm"]["Edate"].value;
+var comparision=StartDate.localeCompare(EndDate);
+
+if (comparision==1 || comparision==0 )  
+{  
+alert("Please enter Greater date than Starting Date in End Date");  
+return false;  
+}  
+
+} 
+
+function Database(){
+	var service_id= document.forms["myForm"]["service_id"].value; 
+	
+	
+	if (service_id==null)
+		{
+		alert("please enter service_id")
+		
+		return false;  
+		}
+	
+	else{
+		var a=confirm("Are you ready to downlaod Excel sheet of entered data");
+		
+		
+		if(a==true)
+		{
+		
+		open("http://localhost/Service_id="+service_id+".xlsx");
+		}
+}
+	}
+
+
+</script>
+
+	<form  name="myForm"  action="DatabaseAccess" method="post">		
+	
+	<table align="center" width="40%"  style=" background-color:#5c6d87; border: 3px inset #FFB975; border-radius: 15px; box-shadow:15px 10px 15px 2px #FFB975;">
+	
+	<tr>
+	<td align="left">Starting Date:</td>
+	<td align="left">				
+	<input type="datetime-local" placeholder="yyyy-MM-dd HH:mm:ss" name="Sdate" required><br> 
+	</td>
+	</tr>
+	
+	<tr>
+	<td align="left">End Date:</td>
+	<td align="left">
+	
+	<input 	type="datetime-local" placeholder="yyyy-MM-dd HH:mm:ss"  name="Edate"  required><br> 
+	
+	</td>
+	</tr>
+	<tr>
+	<td align="left">
+	Service Id
+	
+	</td>
+	
+	<td align="left">
+	<input type="text" name="service_id"  required>
+	</td>
+	</tr>
+	
+	
+	<tr>   
+	<td align="left">
+	Go To DataBase
+	
+	</td>
+	
+	<td align="left">
+	<input type="submit" name="log in" value="Go" onsubmit="return required();">
+	
+	</td>
+	
+	<td align="left">
+	
+	<input type="Button" name="Download" value="Download" onclick="return Database()" disabled>
+	
+	</td>
+	</tr>
+
+	
+	</table>
+	</form>
+
+	</body>
+</html>
